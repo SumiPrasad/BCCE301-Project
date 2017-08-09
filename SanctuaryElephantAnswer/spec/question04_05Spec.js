@@ -1,6 +1,6 @@
 describe("Question Four and Question Five", () => {
     describe("Elephant", () => {
-        let elephant;
+        let elephant
         beforeEach(() => {
             elephant = new Elephant()
         })

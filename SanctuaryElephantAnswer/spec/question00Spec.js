@@ -1,4 +1,3 @@
-
 describe("Basic Check For Original Source Code", () => {
     describe("Sanctuary", () => {
         let theSanctuary

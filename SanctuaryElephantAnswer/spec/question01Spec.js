@@ -1,3 +1,3 @@
-describe("Question One",() => {
-    describe("Draw a class diagram",() => {})
+describe('Question One', () => {
+  describe('Draw a class diagram', () => {})
 })
