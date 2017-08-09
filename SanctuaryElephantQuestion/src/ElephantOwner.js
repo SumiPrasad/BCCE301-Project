@@ -7,10 +7,6 @@ class ElephantOwner {
     this.mySanctuary = theSanctuary
     this.allMyElephants = []
   }
- 
-
-  
-
   sortElephants () {
     this.allMyElephants.sort(function (a, b) {
       if (a.species !== b.species) {
@@ -18,6 +14,5 @@ class ElephantOwner {
       }
       return b.height - a.height
     })
-  }
-  
+  } 
 }

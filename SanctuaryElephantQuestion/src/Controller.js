@@ -1,7 +1,7 @@
 class Controller {
 
 	static setup () {
-		let theSanctuary;
+		let theSanctuary
 		theSanctuary = new Sanctuary();
 		// ADD CODE HERE TO CREATE THE ELEPHANTOWNERS
 
@@ -13,8 +13,6 @@ class Controller {
 		TPL    Tania     	Paul	   02/08/1995
 		*/
 		
-        
-
 		//ADD CODE HERE TO CREATE THE ELEPHANT
 
 		/*
