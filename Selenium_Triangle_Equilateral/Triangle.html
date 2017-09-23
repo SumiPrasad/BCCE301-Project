@@ -1,0 +1,31 @@
+	<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>Triangle</title>
+ <script src="Triangle.js"></script>
+ <div id="divDisplay"></div>
+</head>
+
+<body>
+    <script>
+        let triangle = new Triangle( 2,2,2)
+        let theDisplay = document.getElementById( 'divDisplay' )
+            let recalculate = function (){
+            let a = Number( document.getElementById('a').value )
+            let b = Number( document.getElementById('b').value )
+            let c = Number( document.getElementById('c').value )
+            triangle.setSides( a,b,c )
+            theDisplay.innerHTML = triangle.result
+        }
+        let go = function () {
+
+            document.body.style.fontFamily = 'Courier New'
+            document.body.style.fontSize = 'x-large'
+            theDisplay.innerHTML = triangle.result  
+        }
+         
+        window.onload = go;
+    </script>
+</body> 
+</html>
