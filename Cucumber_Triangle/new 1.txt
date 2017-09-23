@@ -1,0 +1,59 @@
+Feature: Triangle
+  In order identify types of triangle
+  As a developer
+  I want to check the sides
+
+  Scenario Outline: Triangle type
+    Given a variable set to <sideA>
+    Given a variable set to <sideB>
+    Given a variable set to <sideC>
+    Then the triangle is <result>
+   
+
+    Examples:
+      | sideA   | sideB | sideC |result     |
+      | 5       | 5     | 5     |equilateral|
+      | 3       | 4     | 4     |isosceles  |
+      | 4       | 3     | 4     |isosceles  |
+      | 4       | 4     | 3     |isosceles  |
+      | 3       | 4     | 5     |scalene    |
+
+Cucumber.defineSupportCode(function(context) {
+  var setWorldConstructor = context.setWorldConstructor;
+  var Given = context.Given
+  var When = context.When
+  var Then = context.Then
+
+  ///// Your World /////
+  //
+  // Call 'setWorldConstructor' with to your custom world (optional)
+  //
+
+  var CustomWorld = function() {};
+
+  CustomWorld.prototype.variable = 0;
+
+  CustomWorld.prototype.setTo = function(number) {
+    this.variable = parseInt(number);
+  };
+
+  setWorldConstructor(CustomWorld);
+
+  ///// Your step definitions /////
+  //
+  // use 'Given', 'When' and 'Then' to declare step definitions
+  //
+
+  Given(/^a variable set to (\d+)$/, function(number) {
+    this.setTo(number);
+  });
+
+ Then(/^ the triangle is (.*)$/, function(expectedResult){
+  assertEqual('equilateral',result)
+});
+     
+})
+
+
+
+ /www.custardbelly.com/blog/blog-posts/2014/01/08/bdd-in-js-cucumberjs/
