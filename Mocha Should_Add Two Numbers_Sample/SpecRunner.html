@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mocha-Chai Should Spec Runner</title>
+    <link rel="stylesheet" href="lib/mocha.css"/>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="lib/should.js"></script>
+    <script src="lib/mocha.js"></script>
+	<script src="lib/chai.js"></script>
+	 <script>mocha.setup('bdd');</script>
+	
+  <!-- include source files here... -->
+  <script src="src/Controller.js"></script>
+  <script src="src/Test.js"></script>
+ 
+  <!-- include spec files here... -->
+  <script src="spec/spec.js"></script>
+  
+ 
+    <script>
+      mocha.run();
+	</script>
+  </body>
+</html>
