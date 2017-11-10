@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cucumber.js</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="browser-example.css" rel="stylesheet" type="text/css"/>
+
+    <link href="images/favicon.png" rel="icon" type="image/png">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+
+    <!-- Hack to get ansi-html to run in the browser -->
+    <script type="text/javascript">
+      var module = {};
+    </script>
+    <script type="text/javascript">
+      var ansiHTML = module.exports;
+      module = null;
+    </script>
+
+    <script type="text/javascript" src="cucumber.js"></script>
+	<script type="text/javascript" src="chai.js"></script>
+    <script type="text/javascript" src="browser-example.js"></script>
+	<script type="text/javascript" src="assert.js"></script>
+	
+  </head>
+  <body>
+    <div class="header">
+      <a href="https://cucumber.io/">
+        <img class="cucumber-logo" src="images/cucumber.svg">
+      </a>
+      
+    </div>
+
+    <div class="main">
+      <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a href="#feature-tab" data-toggle="tab">Feature</a></li>
+        <li><a href="#step-definitions-tab" data-toggle="tab">Step Definitions</a></li>
+        <li><a href="#output-tab" data-toggle="tab">Output</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="feature-tab">
+          <div id="feature">
+  
+  Feature: Triangle
+  In order identify types of triangle
+  As a developer
+  I want to check the sides
+
+  Scenario Outline: Triangle type
+    Given sides &lt;sideA&gt; and &lt;sideB&gt; and &lt;sideC&gt;  
+	When setSides
+    Then the triangle is &lt;result&gt;
+    
+   Examples:
+      | sideA   | sideB | sideC |result     |
+      | 5       | 5     | 5     |Equilateral|
+      | 3       | 4     | 4     |Isosceles  |
+      | 6       | 7     | 6     |Isosceles  |
+      | 8       | 9     | 9     |Isosceles  |
+      | 3       | 4     | 5     |Scalene    |
+      | 0       | 3     | 2     |Invalid    |
+      | 2       | 0     | 1     |Invalid    |
+      | 4       | 5     | 0     |Invalid    |
+      | 0       | 0     | 2     |Invalid    |
+      | 0       | 6     | 0     |Invalid    |
+      | 7       | 0     | 0     |Invalid    |
+      | 0       | 0     | 0     |Invalid    |
+	  </div>
+        </div>
+        <div class="tab-pane" id="step-definitions-tab">
+          <div id="step-definitions">
+Cucumber.defineSupportCode(function(context) {
+  var setWorldConstructor = context.setWorldConstructor;
+  var Given = context.Given;
+  var When = context.When;
+  var Then = context.Then;
+  var assert = chai.assert;
+ 
+  var TriangleTest = function() {};
+  
+class Triangle {
+    constructor(a, b, c) {
+        this.result = "INVALID"
+        this.setSides(a, b, c)
+    }
+
+    setSides(a, b, c) {
+        let validInput = -1
+        if ((a > 0) && (a < 100) && (b > 0) && (b <= 100) && (c > 0) && (c <= 100)) {
+            if (((a + b) > c) && ((c + a) > b) && ((b + c) > a)) {
+                validInput = 1;
+            }
+        }
+        if (validInput === 1) {
+            if ((a === b) && (b === c)) {
+                this.result = "EQUILATERAL"
+            } else if ((a === b) || (b === c) || (c === a)) {
+                this.result = "ISOSCELES"
+            } else {
+                this.result = "SCALENE"
+            }
+        } else if (validInput === 0) {
+            this.result = "INVALID"
+        }
+    }
+}
+        
+  setWorldConstructor(TriangleTest);
+
+  ///// Step definitions /////
+
+theTriangle  =  new Triangle()
+  Given(/^sides (\d+) and (\d+) and (\d+)$/, function(sideA,sideB,sideC) {
+    theTriangle.setSides(sideA,sideB,sideC)
+  });
+  
+  When(/^setSides$/,function(){
+  theTriangle.result = theTriangle.setSides(this.sideA,this.sideB,this.sideC)  
+  });
+ 
+  Then(/^the triangle is (.*)$/, function(result) {
+  assert.equal(theTriangle.result,this.result)  
+  });
+     
+});
+
+</div>
+        </div>
+        <div class="tab-pane" id="output-tab">
+          <pre id="output"></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <button class="btn" id="run-feature">Run Feature</button>
+    </div>
+  </body>
+</html>
