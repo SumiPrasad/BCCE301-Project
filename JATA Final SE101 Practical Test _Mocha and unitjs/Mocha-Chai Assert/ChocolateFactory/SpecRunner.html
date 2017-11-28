@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mocha-Chai Assert Test</title>
+    <link rel="stylesheet" href="lib/mocha.css"/>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="lib/main.js"></script>
+    <script src="lib/assert.js"></script>
+    <script src="lib/mocha.js"></script>
+	<script src="lib/chai.js"></script>
+	 <script>mocha.setup('bdd');</script>
+	
+  <!-- include source files here... -->
+  <script src="src/Controller.js"></script>
+  <script src="src/ChocolateFactory.js"></script>
+  <script src="src/BranchOwner.js"></script>
+  <script src="src/Branch.js"></script>
+  
+   
+
+  <!-- include spec files here... -->
+  <script src="spec/question00Spec.js"></script>
+  <script src="spec/question01Spec.js"></script>
+  <script src="spec/question02Spec.js"></script>
+  <script src="spec/question03Spec.js"></script>
+  <script src="spec/question04_05Spec.js"></script>
+  <script src="spec/question06Spec.js"></script>
+  <script src="spec/question07Spec.js"></script>
+  
+    <script>
+      mocha.run();
+	</script>
+  </body>
+</html>
