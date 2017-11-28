@@ -2,7 +2,7 @@
 describe('Triangle Test', () => {
   let theTriangle
   beforeEach(() => {
-    theTriangle = new Triangle()
+    theTriangle =  new Triangle()
   })
   describe('Triangle.setSides function', () => {
     it('Should be defined', () => {
