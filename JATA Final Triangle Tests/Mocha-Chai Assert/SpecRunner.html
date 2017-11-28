@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mocha-Chai Assert Spec Runner</title>
+    <link rel="stylesheet" href="lib/mocha.css"/>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    
+    <script src="lib/assert.js"></script>
+    <script src="lib/mocha.js"></script>
+	<script src="lib/chai.js"></script>
+	 <script>mocha.setup('bdd');</script>
+	
+  <!-- include source files here... -->
+  <script src="Triangle.js"></script>
+ 
+   
+
+  <!-- include spec files here... -->
+  <script src="TriangleSpec.js"></script>
+ 
+    <script>
+      mocha.run();
+	</script>
+  </body>
+</html>
